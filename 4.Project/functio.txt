@@ -1,0 +1,22 @@
+void insert(){
+
+    system("cls");
+    fstream file;
+    cout << "\n------------------------------------------------------------------";
+    cout << "\n----------------------------Add Student Details-------------------" << endl;
+    cout << "\t\t\tEnter Book Name :: ";
+    cin >> bookname;
+    cout << "\t\t\tEnter Book ID :: ";
+    cin >>  bookid;
+    cout << "\t\t\tEnter Author Name :: ";
+    cin >> authorname;
+    cout << "\t\t\tEnter Book Category :: ";
+    cin >> bookcategory;
+    cout << "\t\t\tEnter Publication Company Name :: ";
+    cin >> bookpubcom;
+    cout << "\t\t\tEnter Publication Month :: ";
+    cin >> bookpubmonth;
+    cout << "\t\t\tEnter Publication Year :: ";
+    cin >>  bookpubyear;
+}
+

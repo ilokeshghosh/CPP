@@ -1,0 +1,14 @@
+'<<' is a insertion operator(cout<<a)
+'>>' is a extraction operator(cin>>a)
+'::' is called scope resolution operator and it is use to print the value of  global variable
+type def , it is use to make easier to call a structure like 'college' to 'co' on structure 
+ Unions use shared memory so only 1 variable can be used at a time
+ example:
+    union money
+    {
+        /* data */
+        int rice; //4
+        char car; //1
+        float pounds; //4
+    };
+if we change the value of refernce variable then actual value will change

@@ -1,0 +1,340 @@
+1.1: Program: Write a program to implement linear search in C language.
+
+#include <stdio.h>  
+int linearSearch(int a[], int n, int val) {  
+  // Going through array sequencially  
+  for (int i = 0; i < n; i++)  
+    {  
+        if (a[i] == val)  
+        return i+1;  
+    }  
+  return -1;  
+}  
+int main() {  
+  int a[] = {70, 40, 30, 11, 57, 41, 25, 14, 52}; // given array  
+  int val = 41; // value to be searched  
+  int n = sizeof(a) / sizeof(a[0]); // size of array  
+  int res = linearSearch(a, n, val); // Store result  
+  printf("The elements of the array are - ");  
+  for (int i = 0; i < n; i++)  
+  printf("%d ", a[i]);   
+  printf("\nElement to be searched is - %d", val);  
+  if (res == -1)  
+  printf("\nElement is not present in the array");  
+  else  
+  printf("\nElement is present at %d position of array", res);  
+  return 0;  
+}  
+
+
+1.2: Program: Write a program to implement Binary search in C language.
+
+#include <stdio.h>  
+int binarySearch(int a[], int beg, int end, int val)    
+{    
+    int mid;    
+    if(end >= beg)     
+    {        mid = (beg + end)/2;    
+/* if the item to be searched is present at middle */  
+        if(a[mid] == val)    
+        {                 
+            return mid+1;    
+        }    
+            /* if the item to be searched is smaller than middle, then it can only be in left subarray */  
+        else if(a[mid] < val)     
+        {  
+            return binarySearch(a, mid+1, end, val);    
+        }    
+            /* if the item to be searched is greater than middle, then it can only be in right subarray */  
+        else     
+        {  
+            return binarySearch(a, beg, mid-1, val);    
+        }          
+    }    
+    return -1;     
+}   
+int main() {  
+  int a[] = {11, 14, 25, 30, 40, 41, 52, 57, 70}; // given array  
+  int val = 40; // value to be searched  
+  int n = sizeof(a) / sizeof(a[0]); // size of array  
+  int res = binarySearch(a, 0, n-1, val); // Store result  
+  printf("The elements of the array are - ");  
+  for (int i = 0; i < n; i++)  
+  printf("%d ", a[i]);   
+  printf("\nElement to be searched is - %d", val);  
+  if (res == -1)  
+  printf("\nElement is not present in the array");  
+  else  
+  printf("\nElement is present at %d position of array", res);  
+  return 0;  
+}  
+
+
+2.1: Program: Write a program to implement bubble sort in C language.
+
+#include<stdio.h>    
+ void print(int a[], int n) //function to print array elements  
+    {  
+    int i;  
+    for(i = 0; i < n; i++)    
+    {    
+        printf("%d ",a[i]);    
+    }        
+    }  
+ void bubble(int a[], int n) // function to implement bubble sort  
+ {  
+   int i, j, temp;  
+   for(i = 0; i < n; i++)    
+    {    
+      for(j = i+1; j < n; j++)    
+        {    
+            if(a[j] < a[i])    
+            {    
+                temp = a[i];    
+                a[i] = a[j];    
+                a[j] = temp;     
+            }     
+        }     
+    }     
+ }  
+void main ()    
+{    
+    int i, j,temp;     
+    int a[5] = { 10, 35, 32, 13, 26};     
+    int n = sizeof(a)/sizeof(a[0]);   
+    printf("Before sorting array elements are - \n");  
+    print(a, n);  
+    bubble(a, n);  
+    printf("\nAfter sorting array elements are - \n");    
+    print(a, n);  
+}    
+
+
+
+2.2 Program: Write a program to implement insertion sort in C language.
+
+#include <stdio.h>  
+  
+void insert(int a[], int n) /* function to sort an aay with insertion sort */  
+{  
+    int i, j, temp;  
+    for (i = 1; i < n; i++) {  
+        temp = a[i];  
+        j = i - 1;  
+  
+        while(j>=0 && temp <= a[j])  /* Move the elements greater than temp to one position ahead from their current position*/  
+        {    
+            a[j+1] = a[j];     
+            j = j-1;    
+        }    
+        a[j+1] = temp;    
+    }  
+}  
+  
+void printArr(int a[], int n) /* function to print the array */  
+{  
+    int i;  
+    for (i = 0; i < n; i++)  
+        printf("%d ", a[i]);  
+}  
+  
+int main()  
+{  
+    int a[] = { 12, 31, 25, 8, 32, 17 };  
+    int n = sizeof(a) / sizeof(a[0]);  
+    printf("Before sorting array elements are - \n");  
+    printArr(a, n);  
+    insert(a, n);  
+    printf("\nAfter sorting array elements are - \n");    
+    printArr(a, n);  
+  
+    return 0;  
+}    
+
+
+2.3 Program: Write a program to implement selection sort in C language.
+
+#include <stdio.h>  
+  
+void selection(int arr[], int n)  
+{  
+    int i, j, small;  
+      
+    for (i = 0; i < n-1; i++)    // One by one move boundary of unsorted subarray  
+    {  
+        small = i; //minimum element in unsorted array  
+          
+        for (j = i+1; j < n; j++)  
+        if (arr[j] < arr[small])  
+            small = j;  
+// Swap the minimum element with the first element  
+    int temp = arr[small];  
+    arr[small] = arr[i];  
+    arr[i] = temp;  
+    }  
+}  
+  
+void printArr(int a[], int n) /* function to print the array */  
+{  
+    int i;  
+    for (i = 0; i < n; i++)  
+        printf("%d ", a[i]);  
+}  
+  
+int main()  
+{  
+    int a[] = { 12, 31, 25, 8, 32, 17 };  
+    int n = sizeof(a) / sizeof(a[0]);  
+    printf("Before sorting array elements are - \n");  
+    printArr(a, n);  
+    selection(a, n);  
+    printf("\nAfter sorting array elements are - \n");    
+    printArr(a, n);  
+    return 0;  
+}    
+
+
+2.4 Program: Write a program to implement quicksort in C language.
+
+#include <stdio.h>  
+/* function that consider last element as pivot,  
+place the pivot at its exact position, and place  
+smaller elements to left of pivot and greater  
+elements to right of pivot.  */  
+int partition (int a[], int start, int end)  
+{  
+    int pivot = a[end]; // pivot element  
+    int i = (start - 1);  
+  
+    for (int j = start; j <= end - 1; j++)  
+    {  
+        // If current element is smaller than the pivot  
+        if (a[j] < pivot)  
+        {  
+            i++; // increment index of smaller element  
+            int t = a[i];  
+            a[i] = a[j];  
+            a[j] = t;  
+        }  
+    }  
+    int t = a[i+1];  
+    a[i+1] = a[end];  
+    a[end] = t;  
+    return (i + 1);  
+}  
+  
+/* function to implement quick sort */  
+void quick(int a[], int start, int end) /* a[] = array to be sorted, start = Starting index, end = Ending index */  
+{  
+    if (start < end)  
+    {  
+        int p = partition(a, start, end); //p is the partitioning index  
+        quick(a, start, p - 1);  
+        quick(a, p + 1, end);  
+    }  
+}  
+  
+/* function to print an array */  
+void printArr(int a[], int n)  
+{  
+    int i;  
+    for (i = 0; i < n; i++)  
+        printf("%d ", a[i]);  
+}  
+int main()  
+{  
+    int a[] = { 24, 9, 29, 14, 19, 27 };  
+    int n = sizeof(a) / sizeof(a[0]);  
+    printf("Before sorting array elements are - \n");  
+    printArr(a, n);  
+    quick(a, 0, n - 1);  
+    printf("\nAfter sorting array elements are - \n");    
+    printArr(a, n);  
+      
+    return 0;  
+}  
+
+
+2.5 Program: Write a program to implement merge sort in C language.
+
+#include <stdio.h>  
+  
+/* Function to merge the subarrays of a[] */  
+void merge(int a[], int beg, int mid, int end)    
+{    
+    int i, j, k;  
+    int n1 = mid - beg + 1;    
+    int n2 = end - mid;    
+      
+    int LeftArray[n1], RightArray[n2]; //temporary arrays  
+      
+    /* copy data to temp arrays */  
+    for (int i = 0; i < n1; i++)    
+    LeftArray[i] = a[beg + i];    
+    for (int j = 0; j < n2; j++)    
+    RightArray[j] = a[mid + 1 + j];    
+      
+    i = 0; /* initial index of first sub-array */  
+    j = 0; /* initial index of second sub-array */   
+    k = beg;  /* initial index of merged sub-array */  
+      
+    while (i < n1 && j < n2)    
+    {    
+        if(LeftArray[i] <= RightArray[j])    
+        {    
+            a[k] = LeftArray[i];    
+            i++;    
+        }    
+        else    
+        {    
+            a[k] = RightArray[j];    
+            j++;    
+        }    
+        k++;    
+    }    
+    while (i<n1)    
+    {    
+        a[k] = LeftArray[i];    
+        i++;    
+        k++;    
+    }    
+      
+    while (j<n2)    
+    {    
+        a[k] = RightArray[j];    
+        j++;    
+        k++;    
+    }    
+}    
+  
+void mergeSort(int a[], int beg, int end)  
+{  
+    if (beg < end)   
+    {  
+        int mid = (beg + end) / 2;  
+        mergeSort(a, beg, mid);  
+        mergeSort(a, mid + 1, end);  
+        merge(a, beg, mid, end);  
+    }  
+}  
+  
+/* Function to print the array */  
+void printArray(int a[], int n)  
+{  
+    int i;  
+    for (i = 0; i < n; i++)  
+        printf("%d ", a[i]);  
+    printf("\n");  
+}  
+  
+int main()  
+{  
+    int a[] = { 12, 31, 25, 8, 32, 17, 40, 42 };  
+    int n = sizeof(a) / sizeof(a[0]);  
+    printf("Before sorting array elements are - \n");  
+    printArray(a, n);  
+    mergeSort(a, 0, n - 1);  
+    printf("After sorting array elements are - \n");  
+    printArray(a, n);  
+    return 0;  
+}  
